@@ -1,14 +1,25 @@
 <main class="contenedor">
-  <p class="etiqueta">ISC-305 · Programación Web</p>
+  <p class="etiqueta">ISC-305 · {{ asignatura() }}</p>
   <h1>¡Hola, {{ nombre() }}!</h1>
   <p class="descripcion">Mi primera aplicación creada con Angular CLI.</p>
 
   <section class="tarjeta">
     <h2>Interacción básica</h2>
     <p>Has presionado el botón {{ contador() }} veces.</p>
+
+    @if (contador() >= 5) {
+      <p>¡Ya comprendiste la interacción básica!</p>
+    }
+
     <div class="acciones">
       <button type="button" (click)="incrementar()">
         Presionar
+      </button>
+      <button type="button" (click)="sumarCinco()">
+        Sumar 5
+      </button>
+      <button type="button" (click)="restarUno()">
+        Restar 1
       </button>
       <button
         type="button"
@@ -21,5 +32,5 @@
   </section>
 
   <app-saludo />
+  <app-perfil-estudiante />
 </main>
-
