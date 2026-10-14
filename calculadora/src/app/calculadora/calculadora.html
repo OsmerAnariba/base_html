@@ -1,1 +1,23 @@
-<p>calculadora works!</p>
+<div class="calculadora">
+  <h1>Calculadora</h1>
+
+  <div class="entrada">
+    <label for="valor-a">Valor A</label>
+    <input id="valor-a" type="number" [value]="a" (input)="actualizarA($event)" />
+  </div>
+
+  <div class="entrada">
+    <label for="valor-b">Valor B</label>
+    <input id="valor-b" type="number" [value]="b" (input)="actualizarB($event)" />
+  </div>
+
+  <div class="botones">
+    <button type="button" (click)="calcular('sumar')">+</button>
+    <button type="button" (click)="calcular('restar')">-</button>
+    <button type="button" (click)="calcular('multiplicar')">×</button>
+    <button type="button" (click)="calcular('dividir')">÷</button>
+    <button type="button" class="limpiar" (click)="limpiar()">C</button>
+  </div>
+
+  <p class="resultado">Resultado: {{ resultado }}</p>
+</div>
