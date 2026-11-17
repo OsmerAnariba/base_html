@@ -37,6 +37,17 @@ Route::middleware('auth')->group(function () {
         ->whereNumber('id')
         ->name('personas.update');
 
+<<<<<<< HEAD
+=======
+    Route::get('/personas/{id}/editar', [PersonaController::class, 'edit'])
+        ->whereNumber('id')
+        ->name('personas.edit');
+
+    Route::put('/personas/{id}', [PersonaController::class, 'update'])
+        ->whereNumber('id')
+        ->name('personas.update');
+
+>>>>>>> c260d97 (Actualizar Registros)
     Route::post('/logout', [LoginController::class, 'destroy'])
         ->name('logout');
 });
