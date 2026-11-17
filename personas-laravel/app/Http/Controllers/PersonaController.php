@@ -48,4 +48,33 @@ public function store(Request $request)
     return redirect()->route('personas.index')
         ->with('exito', 'Persona creada correctamente.');
 }
+
+
+public function edit(int $id)
+{
+    $persona = Persona::findOrFail($id);
+
+    return view('personas.edit', compact('persona'));
+}
+
+public function update(Request $request, int $id)
+{
+    $persona = Persona::findOrFail($id);
+
+    $datos = $request->validate([
+        'dni' => [
+            'required',
+            'regex:/^[0-9]{13}$/',
+            Rule::unique('personas', 'dni')->ignore($persona),
+        ],
+        'nombre' => ['required', 'string', 'max:100'],
+        'fecha_nacimiento' => ['required', 'date', 'before_or_equal:today'],
+    ]);
+
+    $persona->update($datos);
+
+    return redirect()
+        ->route('personas.index')
+        ->with('exito', 'Persona actualizada correctamente.');
+}
 }
